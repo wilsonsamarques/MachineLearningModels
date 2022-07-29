@@ -17,7 +17,20 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # print(y_train.shape)
 # print(y_train)
 
-plt.figure()
-plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, edgecolor='k', s=20)
-plt.show()
+# plt.figure()
+# plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, edgecolor='k', s=20)
+# plt.show()
 
+# a = [1, 1, 1, 2, 2, 3, 4, 5, 6]
+# from collections import Counter
+# most_common = Counter(a).most_common(1)
+# print(most_common[0][0])
+
+from knn import KNN
+clf = KNN(k=3)
+clf.fit(X_train, y_train)
+predictions = clf.predict(X_test)
+
+acc = np.sum(predictions == y_test) / len(y_test)
+
+print(acc)
